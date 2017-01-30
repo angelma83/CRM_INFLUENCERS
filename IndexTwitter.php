@@ -1,6 +1,7 @@
 <?php
 
 include ("TwitterAPIExchange.php");
+include ("conexion.php");
 
 
 // meto la configuracion de la app que se creo en twitter para poder acceder a sus datos. 
