@@ -130,10 +130,12 @@ if ($filaListas==0){
       //echo "El usuario ya está registrado";
     }
   }
+  header('Location:nohayresultados.php');
   mysqli_close($conexion);
 }else{ 
-  echo "El nombre de la lista ya existe, selecciona otro nombre";
+  //echo "El nombre de la lista ya existe, selecciona otro nombre";
+header('Location:mensajelistarepetida.php');
 
 }
-  header ('Location: formulario.php');
+
 ?>
