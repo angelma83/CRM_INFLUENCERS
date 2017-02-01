@@ -99,16 +99,17 @@ if ($filaListas==0){
     $idStr = addslashes($tweet['id_str']);
     $enlacePublicacion = addslashes("https://twitter.com/$idTwitter/status/$idStr");
 
-    echo "<br><br/>";
-    echo "Nombre usuario: $nombreUsuario <br />";
-    echo "ID Twitter: $idTwitter <br />";
-    echo "Descripcion: $descripcion <br />";
-    echo "Seguidores: $followers <br />";
-    echo "Localidad: $localidad <br />";
-    echo "Texto: $text <br />";
-    echo "Enlace perfil: $enlacePerfil";
+    echo "<table>";
+    echo "<tr class='tr100'><td><b>Nombre usuario<b></td> <td>$nombreUsuario</td></tr>";
+    echo "<tr class='tr90'><td><b>ID Twitter<b></td> <td><a href='$enlacePerfil'>$idTwitter</a></td></tr>";
+    echo "<tr class='tr80'><td><b>Descripcion<b></td> <td>$descripcion </td></tr>";
+    echo "<tr class='tr70'><td><b>Seguidores<b></td> <td>$followers</td></tr>";
+    echo "<tr class='tr60'><td><b>Localidad<b></td> <td>$localizacion</td></tr>";
+    echo "<tr class='tr50'><td><b>Texto<b></td> <td>$text</td></tr>";
+   // echo "Enlace perfil: $enlacePerfil";
     //echo "Fecha creación: $fechaCreacion <br />";
     echo "<br><br/>";
+    echo "</table>";
 
     //Registro usuarios
 
@@ -132,6 +133,7 @@ if ($filaListas==0){
   mysqli_close($conexion);
 }else{ 
   echo "El nombre de la lista ya existe, selecciona otro nombre";
-  include ('index.php');
+
 }
+  header ('Location: formulario.php');
 ?>
