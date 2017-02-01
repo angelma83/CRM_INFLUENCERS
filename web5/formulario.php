@@ -4,8 +4,7 @@
 	<title>Formulario</title>
 	<link rel="stylesheet" type="text/css" href="css/crm_influencers.css">
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -13,7 +12,6 @@
 <?php
 
 include 'header.php';
-include 'IndexTwitter.php';
 
 ?>
 
@@ -26,7 +24,7 @@ include 'IndexTwitter.php';
 
 
 <div id="wrap-form">
-<form class="formulario" action="../createTable.php" method="post" enctype="multipart/form-data">
+<form class="formulario" action="resultado_busqueda.php" method="post" enctype="multipart/form-data">
 				<h1>Crear lista</h1>
 				
 				<input type="text" class="cajas" name="lista" title="lista" required placeholder="Nombre de la lista" size="35"><br>
@@ -35,17 +33,10 @@ include 'IndexTwitter.php';
 				<br>
 				
 				<select name="rrss" placeholder="Indica la red social" required>
-<<<<<<< HEAD
 				<option class="red" value="" selected data-default class="red">Indica la red social</option>
-				<option value="Peo"><i class="fa fa-code"></i></option>
-				<option value="Instragram"><i class="fa fa-code"></i></option>
-				<option value="YouTube"><i class="fa fa-code"></i></option>
-=======
-				<option class="red" value="" selected data-default class="red" >Indica la red social</option>
 				<option value="Twitter">Twitter</option>
 				<option value="Instragram">Instragram</option>
 				<option value="YouTube">YouTube</option>
->>>>>>> 5c7568ce82c67c8fb6400126ca4830aa3b241d61
 				</select>
 
 				<br><br>
@@ -117,7 +108,7 @@ include 'IndexTwitter.php';
                       <option value="AE">Emiratos Árabes Unidos</option>  
                       <option value="ER">Eritrea</option>  
                       <option value="SI">Eslovenia</option>  
-                      <option value="ES" >España</option>  
+                      <option value="ES" selected >España</option>  
                       <option value="US">Estados Unidos</option>  
                       <option value="EE">Estonia</option>  
                       <option value="ET">Etiopía</option>  
@@ -291,10 +282,14 @@ include 'IndexTwitter.php';
 				<br><br>
 				<input type="text" class="cajas" name="ciudad" title="ciudad" placeholder="Indica tu ciudad" size="35">
 				<br><br><br>
-				<button name="submit" type="submit" id="contacto" data-submit="sending">ENVIAR</button>
+				<button name="submit" type="submit" id="contacto" data-submit="sending">MOSTRAR RESULTADOS</button>
 			</form>
 
 </div>
 </div>
+
+<?php
+include 'footer.php'
+?>
 </body>
 </html>
