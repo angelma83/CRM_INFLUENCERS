@@ -11,7 +11,6 @@
 <?php
 
 include 'header.php';
-include 'IndexTwitter.php';
 
 ?>
 
@@ -29,7 +28,28 @@ include 'IndexTwitter.php';
 
 				<div id="resultadolista"></div>
 				<br><br>
-				
+				<?php
+					include '../IndexTwitter.php';
+
+
+					echo $nombreLista;
+					echo $palabraClave;
+					echo $redSocial;
+					echo $seguidoresMinimos; 
+					echo $localidad; 
+
+					// echo "<br><br/>";
+    	// 				echo "Nombre usuario: $nombreUsuario <br />";
+    	// 				echo "ID Twitter: $idTwitter <br />";
+    	// 				echo "Descripcion: $descripcion <br />";
+    	// 				echo "Seguidores: $followers <br />";
+    	// 				echo "Localidad: $localidad <br />";
+    	// 				echo "Texto: $text <br />";
+    	// 				echo "Enlace perfil: $enlacePerfil";
+    	// 				//echo "Fecha creación: $fechaCreacion <br />";
+    	// 			echo "<br><br/>";
+
+				?>
 				
 				<a href="lsta.php"><button name="submit" type="button" id="crearlista" data-submit="sending">SÍ, CREAR LISTA</button></a>
 				

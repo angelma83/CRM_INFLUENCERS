@@ -20,8 +20,10 @@ $nombreLista = $_POST['lista'];
 $palabraClave = $_POST['keyword'];
 $redSocial = $_POST['rrss'];
 $seguidoresMinimos = $_POST['seguidores'];
-$localidad = $_POST['localizacion'];
+$localidad = $_POST['pais'];
 
+// variable auxiliar para insertar la palabra de búsqueda en BBDD
+$palabraClaveBBDD = $_POST['keyword'];
 // Se hace la comprobación del parámetro que nos pasan. 
 // # --> %23
 // @ --> %40
@@ -80,7 +82,7 @@ if ($filaListas==0){
   $consultaBd = "SELECT * FROM listas";
   $ejecucionBd = mysqli_query($conexion, $consultaBd);
   
-  mysqli_query($conexion, "INSERT INTO listas (nombre_lista, keyword, red_social, seguidores, localizacion) VALUES ('$nombreLista', '$palabraClave', '$redSocial', '$seguidoresMinimos', '$localidad')") or die ('Error en la conexión con la tabla listas');
+  mysqli_query($conexion, "INSERT INTO listas (nombre_lista, keyword, red_social, seguidores, localizacion) VALUES ('$nombreLista', '$palabraClaveBBDD', '$redSocial', '$seguidoresMinimos', '$localidad')") or die ('Error en la conexión con la tabla listas');
   //echo "Lista guardada en la base de datos ¡viva!";
 
   // recorremos fichero y obtenemos los datos de los usuarios. 

@@ -11,7 +11,7 @@
 <?php
 
 include 'header.php';
-include 'IndexTwitter.php';
+
 
 ?>
 
@@ -33,7 +33,7 @@ include 'IndexTwitter.php';
 				<br>
 				
 				<select name="rrss" placeholder="Indica la red social" required>
-				<option class="red" value="" selected data-default class="red">Indica la red social</option>
+				<option class="red" value="" selected data-default class="red" >Indica la red social</option>
 				<option value="Twitter">Twitter</option>
 				<option value="Instragram">Instragram</option>
 				<option value="YouTube">YouTube</option>
