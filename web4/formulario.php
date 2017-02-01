@@ -4,6 +4,8 @@
 	<title>Formulario</title>
 	<link rel="stylesheet" type="text/css" href="css/crm_influencers.css">
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
 </head>
 <body>
 
@@ -34,9 +36,9 @@ include 'IndexTwitter.php';
 				
 				<select name="rrss" placeholder="Indica la red social" required>
 				<option class="red" value="" selected data-default class="red">Indica la red social</option>
-				<option value="Twitter">Twitter</option>
-				<option value="Instragram">Instragram</option>
-				<option value="YouTube">YouTube</option>
+				<option value="Peo"><i class="fa fa-code"></i></option>
+				<option value="Instragram"><i class="fa fa-code"></i></option>
+				<option value="YouTube"><i class="fa fa-code"></i></option>
 				</select>
 
 				<br><br>
