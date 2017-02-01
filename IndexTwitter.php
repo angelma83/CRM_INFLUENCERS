@@ -1,8 +1,7 @@
 <?php
 
 include ("TwitterAPIExchange.php");
-//include ("conexion_listas.php");
-//include ("conexion_users.php");
+
 
 // meto la configuracion de la app que se creo en twitter para poder acceder a sus datos. 
 $settings = array(
@@ -64,63 +63,73 @@ $ficheroJson = $twitter->setGetfield($palabraClave)
 // decodificamos el fichero y lo guardamos en variable para ir accediendo a sus parámetros. 
 $datosTwitter = json_decode($ficheroJson,TRUE);
 
-// recorremos fichero y obtenemos los datos de los usuarios. 
-foreach($datosTwitter['statuses'] as $tweet)
-{
-  $nombreUsuario = addslashes($tweet['user']['name']);
-  $idTwitter = addslashes($tweet['user']['screen_name']);
-  $descripcion = addslashes($tweet['user']['description']);
-  $followers = addslashes($tweet['user']['followers_count']);
-  $localizacion = addslashes($tweet['user']['location']);
-  $text = addslashes($tweet['text']);
-  $enlacePerfil = addslashes("https://twitter.com/$idTwitter");
-  $web = addslashes($tweet['user']['url']);
-  $idStr = addslashes($tweet['id_str']);
-  $enlacePublicacion = addslashes("https://twitter.com/$idTwitter/status/$idStr");
 
-  echo "<br>";
-  echo "Nombre usuario: $nombreUsuario <br />";
-  echo "ID Twitter: $idTwitter <br />";
-  echo "Descripcion: $descripcion <br />";
-  echo "Seguidores: $followers <br />";
-  echo "Localidad: $localidad <br />";
-  echo "Texto: $text <br />";
-  echo "Enlace perfil: $enlacePerfil";
-  //echo "Fecha creación: $fechaCreacion <br />";
-  echo "<br>";
 
 //Conexion base de datos 
-  $conexion=  new mysqli('localhost', 'user_influencer', 'influencer', 'crm_influencers'); 
-  if (mysqli_connect_errno()){
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
+$conexion=  new mysqli('localhost', 'user_influencer', 'influencer', 'crm_influencers'); 
+if (mysqli_connect_errno()){
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
 
-  mysqli_select_db ($conexion, 'crm_influencers') or die ('No se puede hacer la conexion');
-  
-  //Registro listas
+mysqli_select_db ($conexion, 'crm_influencers') or die ('No se puede hacer la conexion');
+
+//Registro listas, sólo se guarda si el nombre de la lista no existe
+$paso = mysqli_query($conexion, "SELECT * FROM listas WHERE nombre_lista = '$nombreLista'") or die ('Error al buscar la lista en la tabla');
+$filaListas = mysqli_num_rows($paso);
+if ($filaListas==0){
   $consultaBd = "SELECT * FROM listas";
   $ejecucionBd = mysqli_query($conexion, $consultaBd);
   
-
   mysqli_query($conexion, "INSERT INTO listas (nombre_lista, keyword, red_social, seguidores, localizacion) VALUES ('$nombreLista', '$palabraClave', '$redSocial', '$seguidoresMinimos', '$localidad')") or die ('Error en la conexión con la tabla listas');
-  echo "Base de datos cargada correctamente ¡viva!";
+  //echo "Lista guardada en la base de datos ¡viva!";
 
+  // recorremos fichero y obtenemos los datos de los usuarios. 
+  foreach($datosTwitter['statuses'] as $tweet)
+  {
+    $nombreUsuario = addslashes($tweet['user']['name']);
+    $idTwitter = addslashes($tweet['user']['screen_name']);
+    $descripcion = addslashes($tweet['user']['description']);
+    $followers = addslashes($tweet['user']['followers_count']);
+    $localizacion = addslashes($tweet['user']['location']);
+    $text = addslashes($tweet['text']);
+    $enlacePerfil = addslashes("https://twitter.com/$idTwitter");
+    $web = addslashes($tweet['user']['url']);
+    $idStr = addslashes($tweet['id_str']);
+    $enlacePublicacion = addslashes("https://twitter.com/$idTwitter/status/$idStr");
 
+    echo "<br><br/>";
+    echo "Nombre usuario: $nombreUsuario <br />";
+    echo "ID Twitter: $idTwitter <br />";
+    echo "Descripcion: $descripcion <br />";
+    echo "Seguidores: $followers <br />";
+    echo "Localidad: $localidad <br />";
+    echo "Texto: $text <br />";
+    echo "Enlace perfil: $enlacePerfil";
+    //echo "Fecha creación: $fechaCreacion <br />";
+    echo "<br><br/>";
 
-  //Registro usuarios
+    //Registro usuarios
 
-  //Comprobamos el número de usuarios a través de las filas de la tabla
-  $paso1 = mysqli_query($conexion, "SELECT * FROM prueba_usuarios WHERE usuario = '$idTwitter'") or die ('Error al buscar los usuarios en la tabla');
-  $filas = mysqli_num_rows($paso1);
+    //Comprobamos el número de usuarios a través de las filas de la tabla
+    
+    $paso1 = mysqli_query($conexion, "SELECT * FROM prueba_usuarios WHERE usuario = '$idTwitter'") or die ('Error al buscar los usuarios en la tabla');
+    $filas = mysqli_num_rows($paso1);
 
-  //Si el usuario no está registrado vuelve a empezar el bucle
-  if ($filas==0){
-    $consultaUsuarios = "SELECT * FROM prueba_usuarios";
-    $ejecucionUsuarios = mysqli_query($conexion, $consultaUsuarios);
-    mysqli_query($conexion, "INSERT INTO prueba_usuarios (nombre, usuario, bio, seguidores, localidad, texto, enlace_publicacion, web, enlace_perfil) VALUES ('$nombreUsuario', '$idTwitter', '$descripcion', '$followers', '$localizacion', '$text', '$enlacePublicacion', '$web', '$enlacePerfil')") or die ('Error en la conexión con la tabla usuarios');
+    //Si el usuario no está registrado vuelve a empezar el bucle
+    if ($filas==0){
+      $consultaUsuarios = "SELECT * FROM prueba_usuarios";
+      $ejecucionUsuarios = mysqli_query($conexion, $consultaUsuarios);
+      mysqli_query($conexion, "INSERT INTO prueba_usuarios (nombre, usuario, bio, seguidores, localidad, texto, enlace_publicacion, web, enlace_perfil) VALUES ('$nombreUsuario', '$idTwitter', '$descripcion', '$followers', '$localizacion', '$text', '$enlacePublicacion', '$web', '$enlacePerfil')") or die ('Error en la conexión con la tabla usuarios');
 
-    echo "Todo cargadito en la tabla de usuarios";
-    mysqli_close($conexion);
-  } 
+      //echo "<br>Usuario guardado en la base de datos";
+      
+    } else{
+      //echo "El usuario ya está registrado";
+    }
+  }
+  mysqli_close($conexion);
+}else{ 
+  echo "El nombre de la lista ya existe, selecciona otro nombre";
+  include ('index.php');
 }
 ?>
