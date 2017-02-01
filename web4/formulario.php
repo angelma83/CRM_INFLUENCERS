@@ -24,7 +24,7 @@ include 'IndexTwitter.php';
 
 
 <div id="wrap-form">
-<form class="formulario" action="resultado_busqueda.php" method="post" enctype="multipart/form-data">
+<form class="formulario" action="../createTable.php" method="post" enctype="multipart/form-data">
 				<h1>Crear lista</h1>
 				
 				<input type="text" class="cajas" name="lista" title="lista" required placeholder="Nombre de la lista" size="35"><br>

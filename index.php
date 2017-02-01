@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<form class="formulario" action="IndexTwitter.php" method="post" enctype="multipart/form-data">
+<form class="formulario" action="createTable.php" method="post" enctype="multipart/form-data">
 				<label>Nombre de lista</label>
 				<input type="text" class="cajas" name="lista" title="lista" required placeholder="Escribe tu nombre" size="35"><br>
 				<label>Keyword</label>
