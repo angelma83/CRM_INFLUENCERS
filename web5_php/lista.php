@@ -8,29 +8,26 @@
 <body>
 
 
-<?php
 
-include ("header.php");
-include ("busqueda_twitter.php");
-
-
-?>
 
 <div id="contenido" align="center">
-	
+
 	
 
-			<div id="amarillo">	</div>
-			<div id="fondo" style="background-image: url('img/fondo.jpg');opacity: 0.1;" ></div>
+			<!--<div id="amarillo">	</div>
+			<div id="fondo" style="background-image: url('img/fondo.jpg');opacity: 0.1;" ></div>-->
 
-				<div id="wrap-lista">
-				<?php
-				echo "<h1>$nombreLista</h1>" 
 				
+				<?php
+				session_start();
+				echo "Titulo";
+				echo "La red social es $redSocial";
+				echo "<h1>$_SESSION['nombreLista']</h1>"; 
+				header ('Location:resultado_busqueda.php');
 				?>
-;
+
 				</div>
 
-</div>
+<!--</div>-->
 </body>
 </html>
