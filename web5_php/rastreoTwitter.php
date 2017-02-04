@@ -1,14 +1,15 @@
 <?php
+session_start();
   include ("TwitterAPIExchange.php");
+  
 
   // Acceso a los parámetros del formulario de entrada
-  $nombreLista = $_POST['lista'];
+  /*$nombreLista = $_POST['lista'];
   $palabraClave = $_POST['keyword'];
   $redSocial = $_POST['rrss'];
   $seguidoresMinimos = $_POST['seguidores'];
-  $localidad = $_POST['localizacion'];
-
-  if ($redSocial=="Twitter"){
+  $localidad = $_POST['localizacion'];*/
+  
     // meto la configuracion de la app que se creo en twitter para poder acceder a sus datos. 
     $settings = array(
         'oauth_access_token' => "77177045-7zhQGPaiiSQln2TQ6ipyxgL3AV0OzEzvR5WC0Y8kq",
@@ -66,7 +67,7 @@
 
 
     //Conexion base de datos 
-    $conexion=  new mysqli('localhost', 'user_influencer', 'influencer', 'crm_influencers'); 
+    /*$conexion=  new mysqli('localhost', 'user_influencer', 'influencer', 'crm_influencers'); 
     if (mysqli_connect_errno()){
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
@@ -154,8 +155,6 @@
       mysqli_close($conexion);
     }else{ 
       echo "El nombre de la lista ya existe, selecciona otro nombre";
-    }
-  }else{
-    echo "Estás introduciendo una red social no indexada";
-  } 
+    }*/
+   
 ?>

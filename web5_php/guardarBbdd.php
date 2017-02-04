@@ -1,8 +1,8 @@
 <?php
-  include ("TwitterAPIExchange.php");
+  
 
   // Acceso a los parámetros del formulario de entrada
-  $nombreLista = $_POST['lista'];
+  /*$nombreLista = $_POST['lista'];
   $palabraClave = $_POST['keyword'];
   $redSocial = $_POST['rrss'];
   $seguidoresMinimos = $_POST['seguidores'];
@@ -64,8 +64,9 @@
     $datosTwitter = json_decode($ficheroJson,TRUE);
 
 
-
+*/
     //Conexion base de datos 
+    session_start();
     $conexion=  new mysqli('localhost', 'user_influencer', 'influencer', 'crm_influencers'); 
     if (mysqli_connect_errno()){
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -147,15 +148,11 @@
           }
           //echo "<br>Usuario guardado en la base de datos";
           
-        } else{
-          //echo "El usuario ya está registrado";
         }
       }
       mysqli_close($conexion);
-    }else{ 
-      echo "El nombre de la lista ya existe, selecciona otro nombre";
     }
-  }else{
+  /*}else{
     echo "Estás introduciendo una red social no indexada";
-  } 
+  } */
 ?>

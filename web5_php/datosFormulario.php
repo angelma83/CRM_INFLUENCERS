@@ -1,14 +1,16 @@
 <?php
-  include ("TwitterAPIExchange.php");
-
   // Acceso a los parámetros del formulario de entrada
-  $nombreLista = $_POST['lista'];
-  $palabraClave = $_POST['keyword'];
-  $redSocial = $_POST['rrss'];
-  $seguidoresMinimos = $_POST['seguidores'];
-  $localidad = $_POST['localizacion'];
+  session_start();
+  $_SESSION['nombreLista'] = $_POST['lista'];
+  $_SESSION['palabraClave'] = $_POST['keyword'];
+  $_SESSION['redSocial'] = $_POST['rrss'];
+  $_SESSION['seguidoresMinimos'] = $_POST['seguidores'];
+  $_SESSION['localidad'] = $_POST['localizacion'];
 
-  if ($redSocial=="Twitter"){
+  echo "este es el nombre de la lista $_SESSION['nombreLista']";
+  
+
+  /*if ($redSocial=="Twitter"){
     // meto la configuracion de la app que se creo en twitter para poder acceder a sus datos. 
     $settings = array(
         'oauth_access_token' => "77177045-7zhQGPaiiSQln2TQ6ipyxgL3AV0OzEzvR5WC0Y8kq",
@@ -157,5 +159,5 @@
     }
   }else{
     echo "Estás introduciendo una red social no indexada";
-  } 
+  } */
 ?>
