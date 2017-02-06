@@ -41,7 +41,7 @@ include 'header.php';
 </table>
 
 
-	<div id="resultadolista" style="overflow: scroll;">
+	<div id="resultadolista">
 				<?php
 					include 'DatosLista.php';
 					include 'conexion.php';
@@ -53,6 +53,42 @@ include 'header.php';
 
 	 					if ($filaListas==0){
 							include 'IndexTwitter.php';//Muestra la búsqueda, falta edición
+
+echo "<table>";
+  // recorremos fichero y obtenemos los datos de los usuarios. 
+  foreach($datosTwitter['statuses'] as $tweet)
+  {
+    $nombreUsuario = addslashes($tweet['user']['name']);
+    $idTwitter = addslashes($tweet['user']['screen_name']);
+    $descripcion = addslashes($tweet['user']['description']);
+    $followers = addslashes($tweet['user']['followers_count']);
+    $localizacion = addslashes($tweet['user']['location']);
+    $text = addslashes($tweet['text']);
+    $enlacePerfil = addslashes("https://twitter.com/$idTwitter");
+    $web = addslashes($tweet['user']['url']);
+    $idStr = addslashes($tweet['id_str']);
+    $enlacePublicacion = addslashes("https://twitter.com/$idTwitter/status/$idStr");
+
+     echo "<tr> <td class='tr100'>$nombreUsuario</td>
+    <td class='tr90'  width='170px'><a class='perfil' target='_blank' href='$enlacePerfil'>$idTwitter</a></td>
+    <td class='tr80' width='170px'>$descripcion </td>
+    <td class='tr70' width='170px'>$followers</td>
+    <td class='tr60' width='170px'>$localizacion</td>
+    <td class='tr50' width='170px'><a class='perfil' target='_blank' href='$enlacePublicacion'>$text</a></td>
+    </tr>";
+
+   // echo "Enlace perfil: $enlacePerfil";
+    //echo "Fecha creación: $fechaCreacion <br />";
+
+   
+
+} echo "</table>";
+ echo "<br><br/>";
+
+
+   // echo "Enlace perfil: $enlacePerfil";
+    //echo "Fecha creación: $fechaCreacion <br />";
+
 						}else{
 							//header('Location:mensajelistarepetida.php');
 							echo "La tabla ya existe, realiza una nueva búsqueda";

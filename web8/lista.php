@@ -35,16 +35,14 @@ include 'header.php';
 
 <table>
 <thead>
-	<th class='tr100' width='170px'><b>Nombre usuario</b></th>
     <th class='tr90' width='170px'><b>ID Twitter</b></th>
     <th class='tr80' width='170px'><b>Descripcion</b></th>
     <th class='tr70' width='170px'><b>Seguidores</b></th>
     <th class='tr60' width='170px'><b>Localidad</b></th>
     <th class='tr50' width='170px'><b>Texto</b></th>
+    <th class='tr50' width='170px'><b>Fecha</b></th>
+    <th class='tr50' width='170px'><b>Acciones</b></th>
 </thead>
-</table>
-
-
 		<?php
 		include ('RegistroUsuarios.php');//Muestra la lista guardada, falta edición
 		?>
