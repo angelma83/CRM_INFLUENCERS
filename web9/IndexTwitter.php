@@ -48,7 +48,7 @@ $ficheroJson = $twitter->setGetfield($palabraClave)
 //echo $ficheroJson;
 // decodificamos el fichero y lo guardamos en variable para ir accediendo a sus parámetros. 
 $datosTwitter = json_decode($ficheroJson,TRUE);
-/*echo "<table>";
+echo "<table>";
   // recorremos fichero y obtenemos los datos de los usuarios. 
   foreach($datosTwitter['statuses'] as $tweet)
   {
@@ -64,7 +64,7 @@ $datosTwitter = json_decode($ficheroJson,TRUE);
     $enlacePublicacion = addslashes("https://twitter.com/$idTwitter/status/$idStr");
     $fecha = addslashes($tweet['crated_at']);
 
-     /*echo "<tr> <td class='tr100'>$nombreUsuario</td>
+     echo "<tr> <td class='tr100'>$nombreUsuario</td>
     <td class='tr90'  width='170px'><a class='perfil' target='_blank' href='$enlacePerfil'>$idTwitter</a></td>
     <td class='tr80' width='170px'>$descripcion </td>
     <td class='tr70' width='170px'>$followers</td>
@@ -73,12 +73,11 @@ $datosTwitter = json_decode($ficheroJson,TRUE);
     </tr>";
    // echo "Enlace perfil: $enlacePerfil";
     //echo "Fecha creación: $fechaCreacion <br />";
-
+   
    
 
 } echo "</table>";
- echo "<br><br/>";*/
- 
+ echo "<br><br/>";
 //     //Registro usuarios
 
 //     //Comprobamos el número de usuarios a través de las filas de la tabla

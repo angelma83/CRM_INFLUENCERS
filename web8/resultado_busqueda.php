@@ -103,10 +103,10 @@ include 'DatosLista.php';
 				<?php
 					
 					include 'conexion.php';
-					$paso = mysqli_query($conexion, "SELECT * FROM listas WHERE nombre_lista = '".$_SESSION['nombreLista']."'") or die ('Error al buscar la lista en la tabla');
+					$paso = mysqli_query($conexion, "SELECT * FROM nombre_listas WHERE nombre_lista = '".$_SESSION['nombreLista']."'") or die ('Error al buscar la lista en la tabla');
  					$filaListas = mysqli_num_rows($paso);
 
- 					if($_SESSION{'redSocial'}=="Twitter"){
+ 					if($_SESSION{'redSocial'}=="1"){
 
 
 	 					if ($filaListas==0){
