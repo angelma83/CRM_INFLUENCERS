@@ -20,16 +20,20 @@ session_start();
 <body>
 
 <?php
-
 include 'header.php';
-
 ?>
 
-	<div id="fondo" style="background-image: url('img/fondo.jpg');opacity: 0.1;" ></div>
+<div class="row">
+<div id="fondo" style="background-image: url('img/fondo.jpg');opacity: 0.1;" ></div>
 <div id="wrap-result">
-		<h1>Resultados</h1><br>
 
-<table >
+
+
+
+		<?php
+		include ('CrearLista.php');?>
+
+<table>
 <thead>
 	<th class='tr100' width='170px'><b>Nombre usuario</b></th>
     <th class='tr90' width='170px'><b>ID Twitter</b></th>
@@ -41,46 +45,16 @@ include 'header.php';
 </table>
 
 
-	<div id="resultadolista" style="overflow: scroll;">
-				<?php
-					include 'DatosLista.php';
-					include 'conexion.php';
-					$paso = mysqli_query($conexion, "SELECT * FROM nombre_listas WHERE nombre_lista = '".$_SESSION['nombreLista']."'") or die ('Error al buscar la lista en la tabla');
- 					$filaListas = mysqli_num_rows($paso);
+		<?php
+		include ('RegistroUsuarios.php');//Muestra la lista guardada, falta edición
+		?>
+		
+</table>
 
- 					if($_SESSION{'redSocial'}=="1"){
+		<a href="#"><button name="submit" type="button" id="volver" data-submit="sending" >EDITAR</button></a>
 
+		<a href="#"><button name="submit" type="button" id="crearlista" data-submit="sending">ELIMINAR</button></a>
+</div>
 
-	 					if ($filaListas==0){
-							include 'IndexTwitter.php';//Muestra la búsqueda, falta edición
-						}else{
-							//header('Location:mensajelistarepetida.php');
-							echo "La tabla ya existe, realiza una nueva búsqueda";
-						}
-
- 					}else{
-
-
-					echo "Introduzca una red social indexada.";
-
- 					}
- 					
-				?>
-
-	</div>
-				<br><br>
-
-				<a href="formulario.php"><button name="submit" type="button" id="volver" data-submit="sending" >
-				VOLVER</button></a>
-
-				<a href="lista.php"><button name="submit" type="button" id="crearlista" data-submit="sending">GUARDAR LISTA</button></a>
-</div>		
-
-
-<?php
-
-	include 'footer.php';
-
-?>
 </body>
 </html>
