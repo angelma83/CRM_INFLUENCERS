@@ -16,5 +16,9 @@ include 'header.php';
 include ('CrearLista.php');
 include ('RegistroUsuarios.php');
 ?>
+
+<a href="index.php"><button name="submit" type="button" id="volver" data-submit="sending">INICIO</button></a>
+<a href="editarlista.php"><button name="submit" type="button" id="crearlista" data-submit="sending">EDITAR LISTA</button></a>
+
 </body>
 </html>

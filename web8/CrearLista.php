@@ -1,7 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crear lista</title>
+
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+ 
+
+
+
+</head>
+<body>
+
 <?php
+
 // Acceso a los parámetros del formulario de entrada y que se deben incluir en la lista
 
-echo "<h1>".$_SESSION['nombreLista']."</h1>"; 
+echo "<h2>".$_SESSION['nombreLista']."</h2>";
+echo "<h3>  <i class='fa fa-search'></i>&nbsp &nbsp".$_SESSION ['palabraClave']."</h3>";
+
  $nombreLista = $_SESSION['nombreLista'];
  $palabraClaveBBDD = $_SESSION ['palabraClave'];
  $redSocial = $_SESSION['redSocial'];
@@ -24,14 +40,13 @@ $paso = mysqli_query($conexion, "SELECT * FROM listas WHERE nombre_lista = '$nom
  $crear_tabla= "CREATE TABLE $nombreLista(
       nombre VARCHAR(50) COLLATE utf8_spanish_ci, 
       usuario VARCHAR(50) COLLATE utf8_spanish_ci PRIMARY KEY,
-      bio VARCHAR(140) COLLATE utf8_spanish_ci,
+      bio VARCHAR(180) COLLATE utf8_spanish_ci,
       seguidores VARCHAR(20) COLLATE utf8_spanish_ci,
       localidad VARCHAR(70) COLLATE utf8_spanish_ci,
       texto VARCHAR(140) COLLATE utf8_spanish_ci,
       enlace_publicacion VARCHAR(100) COLLATE utf8_spanish_ci,
       web VARCHAR(70) COLLATE utf8_spanish_ci,
-      enlace_perfil VARCHAR(70) COLLATE utf8_spanish_ci,
-      contacto VARCHAR(2) COLLATE utf8_spanish_ci)";
+      enlace_perfil VARCHAR(70) COLLATE utf8_spanish_ci)";
 
       
       if(mysqli_query($conexion,$crear_tabla)){
@@ -46,3 +61,6 @@ $paso = mysqli_query($conexion, "SELECT * FROM listas WHERE nombre_lista = '$nom
 
  }
 ?>
+
+</body>
+</html>

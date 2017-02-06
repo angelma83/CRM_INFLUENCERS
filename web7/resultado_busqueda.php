@@ -32,15 +32,19 @@ include 'header.php';
 				<div id="resultadolista" style="overflow: scroll;">
 				<?php
 					include 'DatosLista.php';
-					include 'conexion';
-					/*$paso = mysqli_query($conexion, "SELECT * FROM listas WHERE nombre_lista = '".$_SESSION['nombreLista']."'") or die ('Error al buscar la lista en la tabla');
+					include 'Conexion.php';
+					$paso = mysqli_query($conexion, "SELECT * FROM listas WHERE nombre_lista = '".$_SESSION['nombreLista']."'") or die ('Error al buscar la lista en la tabla');
  					$filaListas = mysqli_num_rows($paso);
- 					if ($filaListas==0){
-						include 'IndexTwitter.php';
+ 					if ($_SESSION['redSocial']=="Twitter"){
+	 					if ($filaListas==0){
+							include 'IndexTwitter.php';
+						}else{
+							//header('Location:mensajelistarepetida.php');
+							echo "La tabla ya existe, realiza una nueva búsqueda";
+						}
 					}else{
-						//header('Location:mensajelistarepetida.php');
-						echo "La tabla ya existe, realiza una nueva búsqueda";*/
-							
+						echo "Introduzca una red social indexada";
+					}			
 				?>
 				</div>
 				<br><br>
