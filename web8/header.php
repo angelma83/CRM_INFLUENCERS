@@ -6,17 +6,21 @@
 </head>
 <body>
 <header>
-			<div id="logo">
-			<a href="index.php"><img align="center"  src="img/logo.gif" width="350px"></a>
 
+<div class="container-fluid">
 
-				<nav>
+	<div class="row">
+				<div class="col-xs-12 col-md-7" id="logo">
+				<a href="index.php"><img align="center"  src="img/logo.gif" width="350px"></a></div>
 
-			<a href="formulario.php">CREAR LISTA</a>
-			<a href="index.php">MOSTRAR TODAS LAS LISTAS</a>
-			</nav>
-			</div>
+				<nav class="col-xs-8 col-md-5">
+				<a   href="formulario.php">CREAR LISTA</a>
+				<a  href="index.php">MOSTRAR TODAS LAS LISTAS</a>
+				</nav>
+				
 
-		</header>
+	</div>
+</div>
+</header>
 </body>
 </html>

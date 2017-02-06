@@ -22,10 +22,11 @@ session_start();
 <?php
 include 'header.php';
 ?>
-
+<div class="container-fluid">
 <div class="row">
-<div id="fondo" style="background-image: url('img/fondo.jpg');opacity: 0.1;" ></div>
-<div id="wrap-result">
+    <div id="fondo" style="background-image: url('img/fondo.jpg');opacity: 0.1;" ></div>
+
+    <div class="col-md-12" id="wrap-result">
 
 
 
@@ -33,26 +34,26 @@ include 'header.php';
 		<?php
 		include ('CrearLista.php');?>
 
-<table>
-<thead>
-    <th class='tr90' width='170px'><b>ID Twitter</b></th>
-    <th class='tr80' width='170px'><b>Descripcion</b></th>
-    <th class='tr70' width='170px'><b>Seguidores</b></th>
-    <th class='tr60' width='170px'><b>Localidad</b></th>
-    <th class='tr50' width='170px'><b>Texto</b></th>
-    <th class='tr50' width='170px'><b>Fecha</b></th>
-    <th class='tr50' width='170px'><b>Acciones</b></th>
-</thead>
-		<?php
-		include ('RegistroUsuarios.php');//Muestra la lista guardada, falta edición
-		?>
-		
-</table>
+    <table class="table">
+    <thead>
+        <th class='tr90' width='170px'><b>ID Twitter</b></th>
+        <th class='tr80' width='170px'><b>Descripcion</b></th>
+        <th class='tr70' width='170px'><b>Seguidores</b></th>
+        <th class='tr60' width='170px'><b>Localidad</b></th>
+        <th class='tr50' width='170px'><b>Texto</b></th>
+        <th class='tr50' width='170px'><b>Fecha</b></th>
+        <th class='tr50' width='170px'><b>Acciones</b></th>
+    </thead>
+    		<?php
+    		include ('RegistroUsuarios.php');//Muestra la lista guardada, falta edición
+    		?>
+    		
+    </table>
 
-		<a href="#"><button name="submit" type="button" id="volver" data-submit="sending" >EDITAR</button></a>
+    		<a href="#"><button name="submit" type="button" id="volver" data-submit="sending" >EDITAR</button></a>
 
-		<a href="#"><button name="submit" type="button" id="crearlista" data-submit="sending">ELIMINAR</button></a>
+    		<a href="#"><button name="submit" type="button" id="crearlista" data-submit="sending">ELIMINAR</button></a>
 </div>
-
+</div>
 </body>
 </html>

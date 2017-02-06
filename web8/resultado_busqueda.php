@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,14 +20,74 @@ session_start();
 <?php
 
 include 'header.php';
+include 'DatosLista.php';
 
 ?>
 
-	<div id="fondo" style="background-image: url('img/fondo.jpg');opacity: 0.1;" ></div>
-<div id="wrap-result">
-		<h1>Resultados</h1><br>
 
-<table >
+
+
+<div class="container-fluid">
+
+	<div id="fondo" style="background-image: url('img/fondo.jpg');opacity: 0.1;" ></div>
+
+  <div id="wrap-result">
+<div class="row">
+
+
+    <div class="col-md-6">
+      <h1 class="xs">Resultados</h1>
+
+       <a href="lista.php"><button name="submit" type="button" id="crearlista" data-submit="sending">GUARDAR LISTA</button></a>
+     </div>
+
+    <div class="col-md-6">
+        <form id="form_resultado"  action="resultado_busqueda.php" method="post" enctype="multipart/form-data">
+       
+     
+       <label>Nombre lista</label><p> <?php echo $_SESSION['nombreLista']; ?></p>
+        
+       
+        <label>Palabra clave / hashtag</label>
+        <input type="text" class=" cajas" name="keyword" title="keyword" required placeholder='<?php 
+        echo $_SESSION['palabraClave'] ?>' required>
+        <br>
+        <label>Red social</label>
+        
+        <select  name="rrss" placeholder="Indica la red required>
+        <option class="red" value="" selected data-default class="red">Indica la red social</option>
+        <option value="Twitter">Twitter</option>
+        <option value="Instragram">Instragram</option>
+        <option value="YouTube">YouTube</option>
+        </select>
+        <br>
+        <label>Seguidores</label>
+        
+        <input type="num" class=" cajas" name="seguidores" title="seguidores" size="35" placeholder='<?php 
+        echo $_SESSION['seguidoresMinimos']; ?>'>
+        <br>
+        <label>Localidad</label>
+        <input type="text" class=" cajas" name="ciudad" title="ciudad" size="35" placeholder='<?php 
+        echo $_SESSION['localidad']; ?>'>
+
+      
+      </form>
+      <br>
+      <a href="resultado_busqueda.php"><button name="submit" type="button" id="crearlista" data-submit="sending">MODIFICAR BÚSQUEDA</button></a>
+     
+
+    </div>
+   
+
+    
+  
+</div>  
+
+
+
+<br><br>
+
+<table class="table">
 <thead>
 	<th class='tr100' width='170px'><b>Nombre usuario</b></th>
     <th class='tr90' width='170px'><b>ID Twitter</b></th>
@@ -43,7 +101,7 @@ include 'header.php';
 
 	<div id="resultadolista">
 				<?php
-					include 'DatosLista.php';
+					
 					include 'conexion.php';
 					$paso = mysqli_query($conexion, "SELECT * FROM listas WHERE nombre_lista = '".$_SESSION['nombreLista']."'") or die ('Error al buscar la lista en la tabla');
  					$filaListas = mysqli_num_rows($paso);
@@ -109,14 +167,14 @@ echo "<table>";
 				<a href="formulario.php"><button name="submit" type="button" id="volver" data-submit="sending" >
 				VOLVER</button></a>
 
-				<a href="lista.php"><button name="submit" type="button" id="crearlista" data-submit="sending">GUARDAR LISTA</button></a>
+			
 </div>		
 
-
+<!--
 <?php
 
 	include 'footer.php';
 
-?>
+?>-->
 </body>
 </html>
