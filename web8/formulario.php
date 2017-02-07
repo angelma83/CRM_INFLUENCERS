@@ -43,9 +43,10 @@ include 'header.php';
 				<option value="2">Instragram</option>
 				<option value="3">YouTube</option>
 				</select>
+         <br> <br> 
 
         <select name="idioma" placeholder="Indica el idioma" required>
-        <option class="red" value="" selected data-default class="red">Indica la red social</option>
+        <option class="red" value="" selected data-default class="red">Indica el idioma</option>
         <option value="1">Español</option>
         <option value="2">Inglés</option>
         </select>
